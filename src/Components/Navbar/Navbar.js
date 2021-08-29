@@ -1,7 +1,9 @@
 import React from 'react'
 import {Navbar,Container,Nav} from 'react-bootstrap'
 import logo from './logo.svg'
-function Navbarr() {
+import {connect} from 'react-redux';
+function Navbarr(props) {
+    console.log(props.product)
     return (
         <div>
             <Navbar bg="dark" variant="dark">
@@ -25,4 +27,8 @@ function Navbarr() {
     )
 }
 
-export default Navbarr
+const mapStateToProps = (state) => ({
+	product: state.product
+  })
+  
+export default connect(mapStateToProps)( Navbarr)

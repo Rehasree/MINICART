@@ -2,38 +2,34 @@ import React,{useEffect,useState} from 'react'
 import {useParams} from 'react-router-dom';
 import {connect} from 'react-redux'
 import './ProductDetails.css'
-import { ConsoleWriter } from 'istanbul-lib-report';
 function ProductDetails(props) {
     const params =useParams();
 	const products = props.product;
     const[productList,setProductList]=useState([]);
+	// params.category takes category from url and data is fetched dynamically from url
     useEffect(() => {
         fetch(`https://fakestoreapi.com/products/category/${params.category}`)
             .then(res=>res.json())
             .then(json=> setProductList(json)
             )
     },[])
-    var details;
+    var details; // takes the details of the product that has to be displayed
     productList.map(data=>{
         if(data.id===Number(params.id)){
              details = data
         }
     })
-	var available = true;
+	var available = true; //checks if the product is available in cart or not
 	if(details){
 		products.map(data=>{
 				if(data.title === details.title){
 						available= false;
 				}
-	})
-    }
-	console.log(available)
+	})}
+	// This uses redux and adds the product into wish lish object which is initialised in redux/store.js
 	const addtoWishlist=()=>{
 		products.push(details)
-        //const products= [...props.product,details]
-		console.log("ONCLICK",products)
         props.dispatch({type:"add",value: products})
-	  // console.log("clicked")
     }
     return (
         <div className="container" style={{marginTop:"200px"}}>

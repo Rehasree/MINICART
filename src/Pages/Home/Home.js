@@ -1,15 +1,14 @@
 import React,{useState,useEffect} from 'react';
 import cart from './img/1.svg';
 import './Home.css'
-// #449124
 function Home() {
     const [categories,setCategories] = useState({});
+    // API call to fetch all the categories available
     useEffect(() => {
         fetch('https://fakestoreapi.com/products/categories')
                 .then(res=>res.json())
                 .then(json=>setCategories(json))
         },[]);
-    console.log(categories)
     return (
         <div className="container" >
             <div className="row">
@@ -25,7 +24,7 @@ function Home() {
                     </p>
                 </div>
             </div>
-            <div className="row">
+            <div className="row" style={{marginBottom:"200px"}}>
                 <h1>CATEGORIES</h1>
                 <br/>
                     <div className="col">
