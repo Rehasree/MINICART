@@ -1,0 +1,27 @@
+.img-fluid{
+    height: 600px;
+    width: 600px;
+}
+p{
+    font-size: 20px;
+    color: grey;
+    font-family: auto;
+    text-align: left;
+}
+h1{
+    color: rgb(7, 154, 212);
+    font-family: revert;
+    font-weight: bolder
+}
+h2{
+    border: 5px solid rgb(7, 154, 212);
+    padding: 20px;
+    text-transform: capitalize;
+    font-family: inherit;
+    height: 150px;
+}
+h2:hover{
+    background-color:rgb(7, 154, 212) ;
+    color: white;
+    border: 5px dotted white;
+}

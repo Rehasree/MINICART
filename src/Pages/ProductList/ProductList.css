@@ -1,0 +1,7 @@
+.tag{
+    text-transform: capitalize;
+    background: skyblue;
+    color: black;
+    border-radius: 5px;
+    text-align: center;
+}
