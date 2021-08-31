@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import {useParams} from 'react-router-dom';
 import {connect} from 'react-redux'
+import {Spinner} from 'react-bootstrap'
 import './ProductDetails.css'
 function ProductDetails(props) {
     const params =useParams();
@@ -20,6 +21,7 @@ function ProductDetails(props) {
         }
     })
 	var available = true; //checks if the product is available in cart or not
+	console.log(details)
 	if(details){
 		products.map(data=>{
 				if(data.title === details.title){
@@ -33,7 +35,15 @@ function ProductDetails(props) {
     }
     return (
         <div className="container" style={{marginTop:"200px"}}>
-        <div class="product-content product-wrap clearfix">
+		{!details?(
+			<>
+			<Spinner animation="border" role="status">
+				<span className="visually-hidden">Loading...</span>
+			</Spinner>
+			<h2>Please reload the page</h2>
+			</>
+		):(
+			<div class="product-content product-wrap clearfix">
 		<div class="row">
 				<div class="col-md-5 col-sm-12 col-xs-12">
 					<div class="product-image"> 
@@ -88,8 +98,11 @@ function ProductDetails(props) {
 				</div>
 			</div>
 		</div>
-	</div>
-         </div>
+		</div>
+		)}
+			
+        
+     </div>
    
    )
 }
